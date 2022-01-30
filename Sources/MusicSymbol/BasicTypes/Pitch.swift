@@ -206,3 +206,9 @@ public func >= (lhs: Pitch, rhs: Pitch) -> Bool {
     return lhs.rawValue >= rhs.rawValue
 }
 
+/// hashable
+extension Pitch: Hashable {
+    public var hashValue: Int {
+        return self.rawValue
+    }
+}
