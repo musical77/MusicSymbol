@@ -85,13 +85,16 @@ public struct Pitch: RawRepresentable, Codable, Equatable,
     /// Initilizes the pitch with an integer value that represents the MIDI note number of the pitch.
     ///
     /// - Parameter rawValue: MIDI note number of the pitch.
-    public init?(rawValue: Pitch.RawValue) {
+    public init(rawValue: Pitch.RawValue) {
         self = Pitch(midiNote: rawValue)
     }
+    
+    /// sugars
+    public static var C4 : Pitch { return Pitch("C4") }
 }
 
 
-// MARK: ExpressibleByIntegerLiteral
+/// ExpressibleByIntegerLiteral
 extension Pitch: ExpressibleByIntegerLiteral {
     
     public typealias IntegerLiteralType = Int
@@ -103,10 +106,11 @@ extension Pitch: ExpressibleByIntegerLiteral {
         self = Pitch(midiNote: value)
     }
     
-    /// Initilizes with a string.
-    ///
-    /// - Parameter value: String representation of type.
-    public init?(_ value: String) {
+}
+
+extension Pitch: ExpressibleByStringLiteral {
+    
+    public static func parse(from value: String) -> Pitch? {
         var keyType = KeyType.c
         var accidental = Accidental.natural
         var octave = 0
@@ -128,10 +132,22 @@ extension Pitch: ExpressibleByIntegerLiteral {
             // octave
             octave = (Int(String(value[octaveRange])) ?? 0) * (sign == "-" ? -1 : 1)
             
-            self = Pitch(key: Key(type: keyType, accidental: accidental), octave: octave)
-            return
+            return Pitch(key: Key(type: keyType, accidental: accidental), octave: octave)
+        } else {
+            return nil
         }
-        return nil
+    }
+    
+    /// Initilizes with a string. For the convenience of use, it is assumed that the string must be valid,
+    /// if invalid, the default value will be used (C4)
+    ///
+    /// - Parameter value: String representation of type.
+    public init(stringLiteral value: String) {
+        if let pitch = Pitch.parse(from: value) {
+            self = pitch
+        } else {
+            self = Pitch.C4
+        }
     }
     
     // MARK: CustomStringConvertible

@@ -29,9 +29,9 @@ extension Note: CustomStringConvertible {
     public init?(_ value: String) {
         let segs = value.split(separator: " ")
         if segs.count == 2 {
-            let pitch = Pitch(String(segs[0]))
+            let pitch = Pitch.parse(from : String(segs[0]))
             let timeValue = NoteTimeValue(String(segs[1]))
-            
+
             if pitch != nil && timeValue != nil {
                 self.pitch = pitch!
                 self.timeValue = timeValue!

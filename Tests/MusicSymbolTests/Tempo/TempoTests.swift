@@ -36,7 +36,7 @@ class TempoTests: XCTestCase {
         let timeSignature = TimeSignature(beats: 4, noteTimeValue: .quarter) // 4/4
         let tempo = Tempo(timeSignature: timeSignature, bpm: 120) // 120BPM
         
-        let beats = tempo.beats(of: Note(pitch: Pitch("C4")!, timeValue: .init(type: .half)))
+        let beats = tempo.beats(of: Note(pitch: "C4", timeValue: .init(type: .half)))
         XCTAssertEqual(beats, 2)
     }
     

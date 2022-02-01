@@ -29,15 +29,15 @@ class PitchTests: XCTestCase {
     }
     
     func testPitchInit() {
-        let p: Pitch = Pitch("f#-5")!
+        let p: Pitch = "f#-5"
         XCTAssert(p.key === Key(type: .f, accidental: .sharp))
         XCTAssert(p.octave == -5)
         
-        let uppercasePitch: Pitch = Pitch("A#3")!
+        let uppercasePitch: Pitch = "A#3"
         XCTAssert(uppercasePitch.key === Key(type: .a, accidental: .sharp))
         XCTAssert(uppercasePitch.octave == 3)
         
-        let uppercasePitch2: Pitch = Pitch("F4")!
+        let uppercasePitch2: Pitch = "F4"
         XCTAssert(uppercasePitch2.key === Key(type: .f, accidental: .natural))
         XCTAssert(uppercasePitch2.octave == 4)
     }
@@ -51,14 +51,14 @@ class PitchTests: XCTestCase {
     }
     
     func testPitchRange() {
-        let pitch = Pitch("C4")!
+        let pitch: Pitch = "C4"
         
-        XCTAssertGreaterThan(pitch, Pitch("B3")!)
-        XCTAssertGreaterThanOrEqual(pitch, Pitch("C4")!)
+        XCTAssertGreaterThan(pitch, Pitch("B3"))
+        XCTAssertGreaterThanOrEqual(pitch, Pitch("C4"))
 
-        XCTAssertLessThan(pitch, Pitch("C#4")!)
+        XCTAssertLessThan(pitch, Pitch("C#4"))
         
-        XCTAssertTrue(pitch >= Pitch("B#3")!)
+        XCTAssertTrue(pitch >= Pitch("B#3"))
     }
 }
 
