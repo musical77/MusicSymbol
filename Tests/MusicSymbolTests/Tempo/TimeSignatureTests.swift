@@ -1,5 +1,5 @@
 //
-//  TempoTests.swift
+//  TimeSignatureTests.swift
 //
 
 import Foundation
