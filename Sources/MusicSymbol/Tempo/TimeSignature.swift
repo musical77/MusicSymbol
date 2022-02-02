@@ -11,7 +11,7 @@
 import Foundation
 
 /// Defines how many beats in a measure with which note value.
-public struct TimeSignature: Codable, Equatable, CustomStringConvertible {
+public struct TimeSignature: Codable, Equatable {
     
     /// Note value per beat.
     public var noteTimeValue: NoteTimeValueType
@@ -44,13 +44,7 @@ public struct TimeSignature: Codable, Equatable, CustomStringConvertible {
         self.noteTimeValue = noteTimeValue
     }
     
-    // MARK: CustomStringConvertible
-    
-    public var description: String {
-        return "\(beats)/\(Int(noteTimeValue.rawValue))"
-    }
-    
-    
+        
     /// Compares two Tempo instances and returns if they are identical.
     /// - Parameters:
     ///   - lhs: Left hand side of the equation.
@@ -61,3 +55,37 @@ public struct TimeSignature: Codable, Equatable, CustomStringConvertible {
     }
 }
 
+
+/// to string from string
+extension TimeSignature: ExpressibleByStringLiteral, CustomStringConvertible {
+    
+    public static func parse(from value: String) -> TimeSignature? {
+        let args = value.split(separator: "/")
+        if args.count == 2 {
+            if let beats = Int(args[0]) {
+                if let division = Int(args[1]) {
+                    if let ts = TimeSignature(beats: beats, division: division) {
+                        return ts
+                    }
+                }
+            }
+        }
+        return nil
+    }
+    
+    /// Initilizes with a string. For the convenience of use, it is assumed that the string must be valid,
+    /// if invalid, the default value will be used (4/4)
+    ///
+    /// - Parameter value: String representation of type.
+    public init(stringLiteral value: String) {
+        if let ts = TimeSignature.parse(from: value) {
+            self = ts
+        } else {
+            self = TimeSignature(beats: 4, noteTimeValue: .quarter)
+        }
+    }
+    
+    public var description: String {
+        return "\(beats)/\(Int(noteTimeValue.rawValue))"
+    }
+}
