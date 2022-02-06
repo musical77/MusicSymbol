@@ -23,5 +23,14 @@ class NoteTests: XCTestCase {
         XCTAssertEqual(note.timeValue.modifier, .dotted)
         XCTAssertEqual(note.timeValue.rawValue, 0.75)
     }
+    
+    func testNoteEqutable() {
+        let note1 = Note("C4 1/2")!
+        let note2 = Note(pitch: .C4, timeValue: .init(type: .half, modifier: .default))
+        XCTAssertEqual(note1, note2)
+        
+        let note3 = Note("C5 1/4")!
+        XCTAssertNotEqual(note1, note3)
+    }
 }
 
