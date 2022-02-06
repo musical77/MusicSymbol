@@ -19,6 +19,15 @@ public struct Note: Codable {
     
 }
 
+// MARK: equtable
+extension Note: Equatable {
+    public static func == (lhs: Note, rhs: Note) -> Bool {
+        return lhs.pitch.rawValue == rhs.pitch.rawValue
+            && lhs.timeValue.rawValue == rhs.timeValue.rawValue
+    }
+    
+}
+
 // MARK: toString, fromString
 
 extension Note: CustomStringConvertible {

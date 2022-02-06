@@ -40,47 +40,6 @@ public struct NoteTimeValue: Codable {
     }
 }
 
-// MARK: - NoteTimeValueType
-/// Defines the types of note values.
-public enum NoteTimeValueType: Double, Codable, CaseIterable, Hashable {
-    /// Two whole notes.
-    case doubleWhole = 0.5
-    /// Whole note.
-    case whole = 1
-    /// Half note.
-    case half = 2
-    /// Quarter note.
-    case quarter = 4
-    /// Eighth note.
-    case eighth = 8
-    /// Sixteenth note.
-    case sixteenth = 16
-    /// Thirtysecond note.
-    case thirtysecond = 32
-    /// Sixtyfourth note.
-    case sixtyfourth = 64
-}
-
-// MARK: - NoteModifier
-
-/// Defines the length of a `NoteValue`
-public enum NoteModifier: Double, Codable, CaseIterable {
-    /// No additional length.
-    case `default` = 1
-    
-    /// Adds half of its own value.
-    case dotted = 1.5
-    
-    /// double dotted
-    case doubleDotted = 1.25
-    
-    /// Three notes of the same value.
-    case triplet = 0.6667
-    
-    /// Five of the indicated note value total the duration normally occupied by four.
-    case quintuplet = 0.8
-}
-
 // MARK: - NoteValue
 
 /// Calculates how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
@@ -112,49 +71,6 @@ public func * (noteTimeValueType: NoteTimeValueType, times: Double) -> NoteTimeV
         }
     }
     return result
-}
-
-
-// MARK: Extensions
-
-extension NoteTimeValueType: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .quarter:
-            return "1/4"
-        case .half:
-            return "1/2"
-        case .eighth:
-            return "1/8"
-        case .doubleWhole:
-            return "2"
-        case .whole:
-            return "1"
-        case .sixteenth:
-            return "1/16"
-        case .thirtysecond:
-            return "1/32"
-        case .sixtyfourth:
-            return "1/64"
-        }
-    }
-}
-
-extension NoteModifier: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .default:
-            return ""
-        case .dotted:
-            return "."
-        case .doubleDotted:
-            return ".."
-        case .triplet:
-            return "(2/3)"
-        case .quintuplet:
-            return "(4/5)"
-        }
-    }
 }
 
 extension NoteTimeValue: CustomStringConvertible {
