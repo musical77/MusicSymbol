@@ -1,6 +1,6 @@
 import Foundation
 
-/// note
+/// Note: musical note, composed of pitch and note duration(timeValue)
 public struct Note: Codable {
     
     /// - Parameters:
