@@ -1,7 +1,4 @@
 //
-//  NoteValue.swift
-//  MusicTheory iOS
-//
 //  Created by Cem Olcay on 21.06.2018.
 //  Copyright © 2018 cemolcay. All rights reserved.
 //

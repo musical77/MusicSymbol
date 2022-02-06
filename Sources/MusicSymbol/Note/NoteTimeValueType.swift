@@ -1,6 +1,13 @@
 //  NoteTimeValueType.swift
 //  Created by lively77 on 2022/2/6.
 
+//
+//  Created by Cem Olcay on 21.06.2018.
+//  Copyright © 2018 cemolcay. All rights reserved.
+//
+//  https://github.com/cemolcay/MusicTheory
+//
+
 import Foundation
 
 

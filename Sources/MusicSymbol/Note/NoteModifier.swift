@@ -1,5 +1,12 @@
 //  NoteModifier.swift
 
+//
+//  Created by Cem Olcay on 21.06.2018.
+//  Copyright © 2018 cemolcay. All rights reserved.
+//
+//  https://github.com/cemolcay/MusicTheory
+//
+
 import Foundation
 
 // MARK: - NoteModifier

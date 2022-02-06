@@ -1,5 +1,3 @@
-//
-//  Enharmonics.swift
 //  MusicTheory
 //
 //  Created by Cem Olcay on 21.06.2018.

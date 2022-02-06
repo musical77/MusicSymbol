@@ -1,4 +1,3 @@
-//
 //  Key.swift
 //  MusicTheory iOS
 //
