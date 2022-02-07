@@ -132,26 +132,6 @@ extension Accidental {
 
 // MARK: op override
 
-/// Returns a new accidental by adding up two accidentals in the equation.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the sum of two accidentals.
-public func + (lhs: Accidental, rhs: Accidental) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue + rhs.rawValue)
-}
-
-/// Returns a new accidental by substracting two accidentals in the equation.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the difference of two accidentals.
-public func - (lhs: Accidental, rhs: Accidental) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue - rhs.rawValue)
-}
-
 /// Returns a new accidental by adding up an int to the accidental in the equation.
 ///
 /// - Parameters:
@@ -172,25 +152,6 @@ public func - (lhs: Accidental, rhs: Int) -> Accidental {
     return Accidental(integerLiteral: lhs.rawValue - rhs)
 }
 
-/// Multiples an accidental with a multiplier.
-///
-/// - Parameters:
-///   - lhs: Accidental you want to multiply.
-///   - rhs: Multiplier.
-/// - Returns: Returns a multiplied acceident.
-public func * (lhs: Accidental, rhs: Int) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue * rhs)
-}
-
-/// Divides an accidental with a multiplier
-///
-/// - Parameters:
-///   - lhs: Accidental you want to divide.
-///   - rhs: Multiplier.
-/// - Returns: Returns a divided accidental.
-public func / (lhs: Accidental, rhs: Int) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue / rhs)
-}
 
 /// Checks if the two accidental is identical in terms of their halfstep values.
 ///
