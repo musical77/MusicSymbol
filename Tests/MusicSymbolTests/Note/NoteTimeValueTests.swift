@@ -100,4 +100,15 @@ class NoteTimeValueTests: XCTestCase {
 
       XCTAssertEqual(sampleLengths, expected)
     }
+    
+    func testNoteTimeValueType() {
+        let noteTimeValueType1 = NoteTimeValueType(denominator: 2)
+        XCTAssertEqual(noteTimeValueType1, .quarter)
+        
+        let noteTimeValueType2 = NoteTimeValueType(denominator: 3)
+        XCTAssertEqual(noteTimeValueType2, .eighth)
+        
+        let noteTimeValueType3 = NoteTimeValueType(denominator: -1)
+        XCTAssertEqual(noteTimeValueType3, nil)
+    }
 }

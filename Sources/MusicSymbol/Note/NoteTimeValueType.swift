@@ -30,6 +30,28 @@ public enum NoteTimeValueType: Double, Codable, CaseIterable, Hashable {
     case thirtysecond = 32
     /// Sixtyfourth note.
     case sixtyfourth = 64
+    
+    // 2^denominator
+    public init?(denominator: Int) {
+        switch denominator {
+        case 0:
+            self = .whole
+        case 1:
+            self = .half
+        case 2:
+            self = .quarter
+        case 3:
+            self = .eighth
+        case 4:
+            self = .sixteenth
+        case 5:
+            self = .thirtysecond
+        case 6:
+            self = .sixtyfourth
+        default:
+            return nil
+        }
+    }
 }
 
 // MARK: Extensions
